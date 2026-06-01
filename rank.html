@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>F100 Voting</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+    }
+
+    .song {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-bottom: 1px solid #333;
+      padding: 10px;
+    }
+
+    img {
+      width: 60px;
+      border-radius: 6px;
+    }
+
+    .song-info {
+      flex: 1;
+    }
+	
+	a:link {
+	  color: gold;
+	}
+
+	a:visited {
+	  color: gold;
+	}
+  </style>
+</head>
+
+<body>
+
+<h1>The Friendliest 100: Night at the Movies!</h1>
+<h2>Song Voting (2/2)</h2>
+Rank this list - the song at the top will receive 10 votes, the next one 9 votes etc.<br>
+Any songs outside your top 10 will not receive any votes.<br><br>
+You can listen to the songs <a href="https://www.youtube.com/playlist?list=PLE8lLfGL-FeAhaJzh81B6M-n66kdDe10_">here</a>.<br><br>
+
+<div id="song-list"></div>
+<br><br>
+
+What is your name?<br><br>
+
+<label>
+  <input type="text" id="voter-name" placeholder="Enter your name">
+</label>
+
+<br><br><br>Are you voting as a member of a subreddit?<br><br>
+
+<label>
+  <input type="radio" name="vote-type" value="triplej">
+  Yes, r/triplej
+</label>
+
+<label>
+  <input type="radio" name="vote-type" value="letterboxd">
+  Yes, r/Letterboxd
+</label>
+
+<label>
+  <input type="radio" name="vote-type" value="party">
+  No
+</label>
+
+<br><br><button onclick="submitVote()">Submit</button>
+
+<br><br><br><br><br><br>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script src="js.js"></script>
+
+<script>
+loadSelectedSongs()
+</script>
+
+</body>
+</html>

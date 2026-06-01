@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>F100 Voting</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+    }
+
+    .song {
+	 display: flex;
+	 align-items: center;
+	 gap: 15px;
+	 border-bottom: 1px solid #333;
+	 padding: 10px;
+	 cursor: pointer;
+	 transition: background 0.2s;
+	}
+
+    img {
+      width: 60px;
+      border-radius: 6px;
+    }
+
+    .song-info {
+      flex: 1;
+    }
+	
+	a:link {
+	  color: gold;
+	}
+
+	a:visited {
+	  color: gold;
+	}
+  </style>
+</head>
+
+<body>
+
+<h1>The Friendliest 100: Night at the Movies!</h1>
+<h2>Song Voting (1/2)</h2>
+Select as many songs as you like from this list - you will then decide your top 10 on the next page.<br><br>
+You can listen to the songs <a href="https://www.youtube.com/playlist?list=PLE8lLfGL-FeAhaJzh81B6M-n66kdDe10_">here</a>.<br><br>
+Once you have selected at least 10 songs, click the 'Next Step' button below, or at the bottom of the page.<br><br>
+
+<button class="next-step-btn" onclick="goToRanking()" disabled>Next Step</button><br><br>
+<button onclick="clearSongs()">Clear Selections</button><br><br><br>
+
+<div id="sort-buttons">
+  <b>Sort by:</b>
+  <button onclick="loadSongs('title')">Song</button>
+  <button onclick="loadSongs('artist')">Artist</button>
+  <button onclick="loadSongs('movie')">Film</button>
+</div>
+
+<br><br>
+<div id="song-list"></div>
+<br><br>
+
+Once you have selected at least 10 songs, click the button below to move on to the next step.<br><br>
+
+<button class="next-step-btn" onclick="goToRanking()" disabled>Next Step</button><br><br>
+<br><br><br><br><br><br>
+
+<script src="js.js"></script>
+
+<script>
+loadSongs()
+</script>
+
+</body>
+</html>
