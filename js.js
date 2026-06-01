@@ -258,7 +258,6 @@ async function submitVote() {
 
  const rankedSongs = songs.map((song, index) => ({
   rank: index + 1,
-  id: song.dataset.id,
   title: song.dataset.title,
   artist: song.dataset.artist,
   movie: song.dataset.movie
