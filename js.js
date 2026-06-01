@@ -265,10 +265,10 @@ async function submitVote() {
  }));
 
  const vote = {
-  voter_name: name,
+  name: name,
   vote_type: voteType.value,
-  submitted_at: new Date().toISOString(),
-  rankings: rankedSongs
+  created: new Date().toISOString(),
+  votes: rankedSongs
  };
 
  const { error } = await client
