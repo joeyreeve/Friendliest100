@@ -249,7 +249,7 @@ async function submitVote() {
   document.querySelector('input[name="vote-type"]:checked');
 
  if (!voteType) {
-  alert("Please select a voting type.");
+  alert("Please select a subreddit.");
   return;
  }
 
