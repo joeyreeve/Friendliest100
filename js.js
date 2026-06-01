@@ -199,6 +199,9 @@ function rankSongs(data) {
   const div = document.createElement("div");
   div.className = "song";
   div.dataset.id = song.id;
+  div.dataset.title = song.title;
+  div.dataset.artist = song.artist;
+  div.dataset.movie = song.movie;
 
   div.innerHTML = `
    <span class="rank"></span>
@@ -246,44 +249,42 @@ async function submitVote() {
   document.querySelector('input[name="vote-type"]:checked');
 
  if (!voteType) {
-  alert("Please select if you are a member of a subreddit.");
+  alert("Please select a voting type.");
   return;
  }
 
  const songs =
   [...document.querySelectorAll("#song-list .song")];
 
- const rankedSongs = songs.map((song, index) => {
-
- const title =
-  song.querySelector("div").childNodes[0].textContent.trim();
-
- const artist =
-  song.querySelector("strong").textContent;
-
- const movie =
-  song.querySelector("em").textContent;
-
- return {
+ const rankedSongs = songs.map((song, index) => ({
   rank: index + 1,
-  title,
-  artist,
-  movie
- };
+  id: song.dataset.id,
+  title: song.dataset.title,
+  artist: song.dataset.artist,
+  movie: song.dataset.movie
+ }));
 
-});
-
- const submission = {
-  name: name,
+ const vote = {
+  voter_name: name,
   vote_type: voteType.value,
   submitted_at: new Date().toISOString(),
   rankings: rankedSongs
  };
 
- console.log("Vote submitted:");
- console.log(submission);
+ const { error } = await client
+  .from("votes")
+  .insert([vote]);
 
- alert(
-  "Vote captured.\n\nCheck the browser console (F12)."
- );
+ if (error) {
+  console.error(error);
+  alert("Failed to submit vote.");
+  return;
+ }
+
+ alert("Vote submitted successfully!");
+
+ localStorage.removeItem("selectedSongs");
+
+window.location.href = "thanks.html";
+
 }
